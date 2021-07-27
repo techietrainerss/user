@@ -1,11 +1,4 @@
-const instana = require('@instana/collector');
-// init tracing
-// MUST be done before loading anything else!
-instana({
-    tracing: {
-        enabled: true
-    }
-});
+
 
 const mongoClient = require('mongodb').MongoClient;
 const mongoObjectID = require('mongodb').ObjectID;
@@ -269,7 +262,7 @@ redisClient.on('ready', (r) => {
 // set up Mongo
 function mongoConnect() {
     return new Promise((resolve, reject) => {
-        var mongoURL = process.env.MONGO_URL || 'mongodb://mongodb:27017/users';
+        var mongoURL = process.env.MONGO_URL || 'mongodb://mongo:27017/users';
         mongoClient.connect(mongoURL, (error, client) => {
             if(error) {
                 reject(error);
